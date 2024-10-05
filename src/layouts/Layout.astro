@@ -1,0 +1,91 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+import "../styles/base.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div
+      class="fixed top-0 h-16 bg-gray-100 w-full border-b border-gray-300 shadow-gray-100 shadow-md opacity-90"
+    >
+      <div class="container mt-3 mx-auto flex justify-between items-center">
+        <div class="text-3xl hidden md:block">
+          <span class="font-thin">dcache</span><span>ui</span>
+        </div>
+        <nav class="flex">
+          <a href="/">Home</a>
+          <a href="/token">Token</a>
+          <a href="/data">Data</a>
+          <a href="/documentation">Documentation</a>
+        </nav>
+        <div class="hidden md:block">
+          <a href="/token">No token selected</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col h-screen">
+      <!-- grows until screen is covered; if larger footer is moved down -->
+      <div class="container mx-auto mt-20 flex-grow pl-2 sm:pl-0">
+        <h1 class="text-3xl font-bold mb-4">{title}</h1>
+        <main>
+          <slot />
+        </main>
+      </div>
+
+      <footer class="">
+        <!-- primary footer -->
+        <div class="bg-sky-900 mt-8">
+          <div class="container mx-auto grid grid-cols-3 py-4 text-gray-300 pl-2 sm:pl-0">
+            <div>
+              <h2 class="text-lg text-white mb-2">dCache UI</h2>
+              <p><a href="/impressum">Documentation</a></p>
+              <p><a href="/impressum">REST API</a></p>
+            </div>
+            <div>
+              <h2 class="text-lg text-white mb-2">Github</h2>
+              <p><a href="/impressum">dcache</a></p>
+              <p><a href="/impressum">dcache-api</a></p>
+              <p><a href="/impressum">dcache-ui</a></p>
+            </div>
+            <div>
+              <h2 class="text-lg text-white mb-2">Hosting</h2>
+
+              <p><a href="/impressum">Sample Data</a></p>
+              <p><a href="/impressum">Request Access</a></p>
+            </div>
+          </div>
+        </div>
+        <!-- secondary footer -->
+        <div class="bg-gray-800">
+          <div class="container mx-auto py-4 text-gray-400 pl-2 sm:pl-0">
+            <p>&copy; 2024 Michael Hoser. All rights reserved.</p>
+            <p><a href="/impressum">Impressum</a></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+
+<style>
+  nav a {
+    @apply border rounded px-4 py-2 hover:bg-red-600 lg:min-w-28 text-center mx-1;
+    @apply border-sky-400 bg-sky-50 text-sky-900  hover:bg-sky-200;
+    @apply transition-colors duration-500 ease-in-out;
+  }
+</style>
