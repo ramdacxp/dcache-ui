@@ -15,6 +15,7 @@ const { title, frontmatter } = Astro.props;
 // Use title property from MD frontmatter if object property is not set
 const pageTitle = title ?? frontmatter?.title;
 
+import TokenInfo from "../components/TokenInfo.astro";
 import "../styles/base.css";
 ---
 
@@ -28,7 +29,7 @@ import "../styles/base.css";
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle} &mdash; dcache-ui</title>
   </head>
-  <body>
+  <body x-data="{token: $persist('').as('dcache-token')}">
     <div
       class="fixed top-0 h-16 bg-gray-100 w-full border-b border-gray-300 shadow-gray-100 shadow-md opacity-90"
     >
@@ -43,7 +44,7 @@ import "../styles/base.css";
           <a href="/documentation">Documentation</a>
         </nav>
         <div class="hidden md:block">
-          <a href="/token">No token selected</a>
+          <TokenInfo href="/token" labelNoToken="No token selected" />
         </div>
       </div>
     </div>
@@ -103,4 +104,3 @@ import "../styles/base.css";
     @apply transition-colors duration-500 ease-in-out;
   }
 </style>
-

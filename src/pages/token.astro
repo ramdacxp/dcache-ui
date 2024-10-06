@@ -1,7 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Data Access Token">
   <p>On this page you can manage data access tokens.</p>
+
+  <div>
+    <span>Current token: </span>
+    <span x-text="token"></span>
+  </div>
+
+  <button class="mt-4 border bg-sky-400 px-4 py-1 rounded" x-on:click="token='ABC'">
+    Set Token
+  </button>
+
+  <button class="mt-4 border bg-sky-400 px-4 py-1 rounded" x-on:click="token=''">
+    Clear Token
+  </button>
 </Layout>

@@ -1,0 +1,14 @@
+---
+interface Props {
+  labelNoToken: string;
+  href: string;
+}
+
+const { href, labelNoToken } = Astro.props;
+---
+
+<div>
+  <a href={href} x-text="token">{labelNoToken}</a>
+</div>
+
+<style></style>
