@@ -1,9 +1,19 @@
 ---
-interface Props {
+// Markdown Frontmatter Properties
+interface Frontmatter {
   title: string;
 }
 
-const { title } = Astro.props;
+// Properties of <Layout/> element
+interface Props {
+  title: string;
+  frontmatter?: Frontmatter;
+}
+
+const { title, frontmatter } = Astro.props;
+
+// Use title property from MD frontmatter if object property is not set
+const pageTitle = title ?? frontmatter?.title;
 
 import "../styles/base.css";
 ---
@@ -16,7 +26,7 @@ import "../styles/base.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>{pageTitle} &mdash; dcache-ui</title>
   </head>
   <body>
     <div
@@ -41,8 +51,10 @@ import "../styles/base.css";
     <div class="flex flex-col h-screen">
       <!-- grows until screen is covered; if larger footer is moved down -->
       <div class="container mx-auto mt-20 flex-grow pl-2 sm:pl-0">
-        <h1 class="text-3xl font-bold mb-4">{title}</h1>
-        <main>
+        <main
+          class="prose prose-h10:text-2xl prose-headings:text-sky-700 prose-headings:font-normal prose-code:before:content-none prose-code:after:content-none"
+        >
+          <h1>{pageTitle}</h1>
           <slot />
         </main>
       </div>
@@ -50,7 +62,9 @@ import "../styles/base.css";
       <footer class="">
         <!-- primary footer -->
         <div class="bg-sky-900 mt-8">
-          <div class="container mx-auto grid grid-cols-3 py-4 text-gray-300 pl-2 sm:pl-0">
+          <div
+            class="container mx-auto grid grid-cols-3 py-4 text-gray-300 pl-2 sm:pl-0"
+          >
             <div>
               <h2 class="text-lg text-white mb-2">dCache UI</h2>
               <p><a href="/impressum">Documentation</a></p>
@@ -89,3 +103,4 @@ import "../styles/base.css";
     @apply transition-colors duration-500 ease-in-out;
   }
 </style>
+
