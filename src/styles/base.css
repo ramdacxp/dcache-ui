@@ -3,9 +3,44 @@
 @tailwind components;
 @tailwind utilities;
 
-.prose {
-  p > code {
-    @apply border border-sky-900 bg-sky-200 px-1 rounded;
+main {
+
+  h1 {
+    @apply font-semibold text-3xl text-sky-900 mb-4;
+  }
+
+  h2 {
+    @apply text-3xl text-sky-900 my-4;
+  }
+
+  h3 {
+    @apply text-2xl text-sky-900 my-4;
+  }
+
+  p {
+    @apply mb-2;
+  }
+
+  p>code {
+    @apply border border-neutral-400 bg-sky-100 px-1 rounded shadow-sm;
+  }
+
+  .astro-code {
+    @apply border border-neutral-400 rounded my-4 py-2 shadow-sm;
+    @apply bg-sky-50 !important;
+
+    .line {
+      @apply px-2;
+    }
+
+    .line:last-child {
+      @apply hidden;
+    }
+
+    span.highlighted {
+      @apply bg-blue-100 inline-block w-full shadow-sm;
+    }
+
   }
 
   a {

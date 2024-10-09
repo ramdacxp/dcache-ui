@@ -52,9 +52,7 @@ import "../styles/base.css";
     <div class="flex flex-col h-screen">
       <!-- grows until screen is covered; if larger footer is moved down -->
       <div class="container mx-auto mt-20 flex-grow pl-2 sm:pl-0">
-        <main
-          class="prose prose-h10:text-2xl prose-headings:text-sky-700 prose-headings:font-normal prose-code:before:content-none prose-code:after:content-none"
-        >
+        <main>
           <h1>{pageTitle}</h1>
           <slot />
         </main>
@@ -100,7 +98,7 @@ import "../styles/base.css";
 <style>
   nav a {
     @apply border rounded px-4 py-2 hover:bg-red-600 lg:min-w-28 text-center mx-1;
-    @apply border-sky-400 bg-sky-50 text-sky-900  hover:bg-sky-200;
+    @apply border-neutral-300 bg-sky-50 text-sky-900 hover:bg-sky-200 hover:border-sky-300;
     @apply transition-colors duration-500 ease-in-out;
   }
 </style>

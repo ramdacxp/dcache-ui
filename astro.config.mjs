@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import alpinejs from "@astrojs/alpinejs";
+import { transformerMetaHighlight } from "@shikijs/transformers";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +16,15 @@ export default defineConfig({
     }),
     alpinejs({
       // custom alpinejs entrypoint to add alpinejs plugins
-      entrypoint: '/src/alpinejs-entrypoint'
+      entrypoint: "/src/alpinejs-entrypoint",
     }),
   ],
+  markdown: {
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "light-plus", // https://shiki.style/themes
+      wrap: true,
+      transformers: [transformerMetaHighlight()],
+    },
+  },
 });
