@@ -10,11 +10,11 @@ import Layout from "../layouts/Layout.astro";
     <span x-text="token"></span>
   </div>
 
-  <button class="mt-4 border bg-sky-400 px-4 py-1 rounded" x-on:click="token='ABC'">
+  <button class="btn mt-4 mr-4" x-on:click="token='ABC'">
     Set Token
   </button>
 
-  <button class="mt-4 border bg-sky-400 px-4 py-1 rounded" x-on:click="token=''">
+  <button class="btn" x-on:click="token=''">
     Clear Token
   </button>
 </Layout>

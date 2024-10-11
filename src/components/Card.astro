@@ -8,7 +8,7 @@ interface Props {
 const { href, title, body } = Astro.props;
 ---
 
-<a href={href} class="block border rounded-lg p-8 shadow-lg bg-sky-50 hover:no-underline hover:bg-sky-400 hover:text-white hover:shadow-md hover:translate-x-1 hover:translate-y-1 hover:border-sky-600 transition-all duration-300">
+<a href={href} class="block border rounded-lg p-8 shadow-lg hover:no-underline hover:shadow-md hover:translate-x-1 hover:translate-y-1 hover:border-sky-600 transition-all duration-300 from-sky-100 to-sky-300 bg-gradient-to-br hover:from-sky-50 hover:to-sky-200">
   <h2 class="m-0 mb-4">{title}</h2>
   <p class="m-0">{body}</p>
 </a>
